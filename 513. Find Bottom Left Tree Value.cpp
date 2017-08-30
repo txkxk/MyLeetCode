@@ -40,7 +40,12 @@ void traversal(TreeNode* root, int depth, vector<ListNode*> &vec)
 		ListNode *LN = new ListNode();
 		LN->node = root;
 		LN->next = NULL;
-		vec[vec.size() - 1]->next = LN;
+		ListNode* head = vec[depth];
+		while (head->next)
+		{
+			head = head->next;
+		}
+		head->next = ln;
 		traversal(root->left, depth + 1, vec);
 		traversal(root->right, depth + 1, vec);
 	}
